@@ -1,50 +1,35 @@
-import { Link } from "gatsby"
-import React from "react"
-import { Navbar, Container, Nav, Button } from "react-bootstrap"
-import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai';
+import React from 'react'
+import { Container, Media, Navbar } from 'react-bootstrap'
+import logo from '../images/ijkkg_logo_traditional.svg'
+interface HeaderProps {
+  title: string
+  titleJapanese: string
+}
 
-import logo from "../images/logo.svg"
-
-const Header = () => {
-
+const Header: React.FC<HeaderProps> = ({ title, titleJapanese }) => {
   return (
-    <Navbar bg="dark" variant="dark" >
-    <Container>
-      <Navbar.Brand href="/">
-        <img
-          alt=""
-          src={logo}
-          height="50"
-          className="d-inline-block"
-        />
-      </Navbar.Brand>
-      <Nav className="mr-auto">
-      <Link to="/" className="font" activeClassName="active">
-        <Nav.Link as="span" eventKey="home">
-          Home
-        </Nav.Link>
-      </Link>
-      <Link to="/history" className="link-no-style" activeClassName="active">
-        <Nav.Link as="span" eventKey="history">
-          History
-        </Nav.Link>
-      </Link>
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand href="#home">
+          <Media>
+            <img
+              width={65}
+              height={65}
+              className="mr-3 rounded-circle bg-white py-2"
+              src={logo}
+              alt="Generic placeholder"
+            />
+            <Media.Body>
+              <p className="mb-0">{titleJapanese}</p>
+              <p className="mb-0">{title}</p>
+            </Media.Body>
+          </Media>
 
-    </Nav>
-    <Nav>
-      <Nav.Link href="https://www.facebook.com/IJKKG">
-        <AiFillFacebook/>
-      </Nav.Link>
-      <Nav.Link href="https://www.instagram.com/ijkkg_goju/">
-        <AiFillInstagram />
-      </Nav.Link>
+        </Navbar.Brand>
 
-      <Button className="pl-2" variant="primary">Members</Button>
-
-    </Nav>
-    </Container>
-  </Navbar>
-)
+      </Container>
+    </Navbar >
+  )
 }
 
 export default Header
